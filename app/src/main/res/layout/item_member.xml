@@ -49,6 +49,16 @@
             android:textSize="11.5sp" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/nota"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Cetak nota"
+        android:padding="10dp"
+        android:src="@drawable/ic_receipt" />
+
     <TextView
         android:id="@+id/pill"
         android:layout_width="wrap_content"

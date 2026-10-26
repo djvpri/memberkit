@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         list.layoutManager = LinearLayoutManager(this)
         adapter = MemberAdapter(
             onClick = { m -> openEdit(m.id) },
-            onLongClick = { m -> confirmDelete(m) }
+            onLongClick = { m -> confirmDelete(m) },
+            onNota = { m -> openNota(m.id) }
         )
         list.adapter = adapter
 
@@ -72,6 +73,10 @@ class MainActivity : AppCompatActivity() {
         val i = Intent(this, EditActivity::class.java)
         i.putExtra("id", id ?: -1L)
         editLauncher.launch(i)
+    }
+
+    private fun openNota(id: Long) {
+        startActivity(Intent(this, NotaActivity::class.java).putExtra("id", id))
     }
 
     private fun confirmDelete(m: Member) {

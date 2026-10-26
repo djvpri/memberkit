@@ -17,7 +17,8 @@ data class Member(
     val app: String,
     val start: String,
     val end: String,
-    val note: String
+    val note: String,
+    val price: Long = 0L
 ) {
     val endDate: LocalDate get() = Dates.parse(end)
     val startDate: LocalDate get() = Dates.parse(start)
@@ -36,12 +37,13 @@ data class Member(
 
     fun toJson(): JSONObject = JSONObject()
         .put("id", id).put("name", name).put("app", app)
-        .put("start", start).put("end", end).put("note", note)
+        .put("start", start).put("end", end).put("note", note).put("price", price)
 
     companion object {
         fun from(o: JSONObject) = Member(
             o.optLong("id"), o.optString("name"), o.optString("app"),
-            o.optString("start"), o.optString("end"), o.optString("note")
+            o.optString("start"), o.optString("end"), o.optString("note"),
+            o.optLong("price", 0L)
         )
     }
 }

@@ -181,6 +181,17 @@
                 android:importantForAutofill="no" />
 
             <TextView
+                style="@style/FieldLabel"
+                android:text="Biaya (Rp)" />
+
+            <EditText
+                android:id="@+id/price"
+                style="@style/FieldInput"
+                android:hint="65000"
+                android:inputType="number"
+                android:importantForAutofill="no" />
+
+            <TextView
                 android:id="@+id/error"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

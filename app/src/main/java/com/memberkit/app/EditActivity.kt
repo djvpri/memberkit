@@ -23,6 +23,7 @@ class EditActivity : AppCompatActivity() {
     private lateinit var fStart: TextView
     private lateinit var fEnd: TextView
     private lateinit var fDuration: TextView
+    private lateinit var fPrice: EditText
     private lateinit var fError: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,7 @@ class EditActivity : AppCompatActivity() {
         fStart = findViewById(R.id.start)
         fEnd = findViewById(R.id.end)
         fDuration = findViewById(R.id.duration)
+        fPrice = findViewById(R.id.price)
         fError = findViewById(R.id.error)
 
         val existing = if (id > 0) store.all().firstOrNull { it.id == id } else null
@@ -45,6 +47,7 @@ class EditActivity : AppCompatActivity() {
             fName.setText(existing.name)
             fApp.setText(existing.app)
             fNote.setText(existing.note)
+            if (existing.price > 0) fPrice.setText(existing.price.toString())
             startDate = existing.startDate
             endDate = existing.endDate
             findViewById<View>(R.id.delete).visibility = View.VISIBLE
@@ -90,6 +93,7 @@ class EditActivity : AppCompatActivity() {
     private fun save() {
         val name = fName.text.toString().trim()
         val app = fApp.text.toString().trim()
+        val price = fPrice.text.toString().filter { it.isDigit() }.toLongOrNull() ?: 0L
 
         when {
             name.isEmpty() -> return fail("Nama member wajib diisi.", fName)
@@ -104,7 +108,8 @@ class EditActivity : AppCompatActivity() {
             app = app,
             start = Dates.iso(startDate),
             end = Dates.iso(endDate),
-            note = fNote.text.toString().trim()
+            note = fNote.text.toString().trim(),
+            price = price
         )
         store.upsert(m)
         finish()

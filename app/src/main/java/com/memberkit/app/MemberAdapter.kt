@@ -9,7 +9,8 @@ import java.time.LocalDate
 
 class MemberAdapter(
     private val onClick: (Member) -> Unit,
-    private val onLongClick: (Member) -> Unit
+    private val onLongClick: (Member) -> Unit,
+    private val onNota: (Member) -> Unit
 ) : RecyclerView.Adapter<MemberAdapter.VH>() {
 
     private var items: List<Member> = emptyList()
@@ -25,6 +26,7 @@ class MemberAdapter(
         val name: TextView = v.findViewById(R.id.name)
         val sub: TextView = v.findViewById(R.id.sub)
         val pill: TextView = v.findViewById(R.id.pill)
+        val nota: View = v.findViewById(R.id.nota)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
@@ -64,5 +66,6 @@ class MemberAdapter(
 
         holder.itemView.setOnClickListener { onClick(m) }
         holder.itemView.setOnLongClickListener { onLongClick(m); true }
+        holder.nota.setOnClickListener { onNota(m) }
     }
 }
