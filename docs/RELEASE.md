@@ -1,5 +1,24 @@
 # Release
 
+## v1.2.0
+
+- `versionCode` 3, `versionName` 1.2.0
+- Auto update dari GitHub Releases (`releases/latest`, tanpa token)
+- Tombol **Cek update** di header layar Member → `UpdateActivity`
+- Izin baru: `INTERNET`, `REQUEST_INSTALL_PACKAGES`
+- APK: https://github.com/djvpri/memberkit/releases/download/v1.2.0/memberkit-1.2.0.apk
+- SHA-256: `69f5a44cc6a5c2e70d5d02eb7ac690246d33090520a0018779b6f08f38964b38`
+
+### Cara update bekerja
+
+1. `GET https://api.github.com/repos/djvpri/memberkit/releases/latest`
+2. Bandingkan `tag_name` vs `BuildConfig.VERSION_NAME` (semver, toleran `v`)
+3. Kalau lebih baru → unduh asset `.apk` ke `cacheDir/update/` dengan progress
+4. Buka installer sistem via `FileProvider` + `ACTION_VIEW`
+
+**Rilis baru otomatis terdeteksi cukup dengan upload APK ke GitHub Releases** — tidak perlu ubah kode.
+Syarat di HP: izinkan "Install unknown apps" untuk MemberKit (sekali saja, diminta sistem saat instalasi pertama).
+
 ## v1.1.0 (rilis pertama)
 
 - `versionCode` 2, `versionName` 1.1.0

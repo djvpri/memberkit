@@ -11,6 +11,7 @@ App Android native (Kotlin) untuk manage member langganan aplikasi: catat nama m
 - Preset durasi 1 / 3 / 6 / 12 bulan → tanggal selesai otomatis
 - Data tersimpan lokal (JSON di internal storage) — offline-first, tanpa izin jaringan
 - Validasi form inline: nama & app wajib, tanggal selesai harus setelah tanggal mulai
+- **Cek update otomatis** dari GitHub Releases + unduh & pasang APK baru dari dalam app
 - **Nota gaya minimarket** (32 kolom monospace, 384 px = 58 mm @203dpi): pratinjau, cetak/PDF via Android Print, simpan ke Galeri, kirim sebagai gambar PNG ke WhatsApp
 
 ## Build
