@@ -11,13 +11,29 @@ android {
         applicationId = "com.memberkit.app"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.1.0"
+    }
+
+    signingConfigs {
+        create("release") {
+            val ksFile = File(rootProject.rootDir, "keystore/memberkit-release.jks")
+            val pwFile = File(rootProject.rootDir, "keystore/password.txt")
+            if (ksFile.exists() && pwFile.exists()) {
+                storeFile = ksFile
+                storePassword = pwFile.readText().trim()
+                keyAlias = "memberkit"
+                keyPassword = pwFile.readText().trim()
+            }
+        }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = if (signingConfigs.getByName("release").storeFile != null)
+                signingConfigs.getByName("release") else null
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
