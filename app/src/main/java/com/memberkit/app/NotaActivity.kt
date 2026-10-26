@@ -28,7 +28,7 @@ class NotaActivity : AppCompatActivity() {
         val file = Nota.png(this, bmp, "nota-${member.id}.png")
         png = file
 
-        findViewById<TextView>(R.id.back).apply {
+        findViewById<android.widget.ImageButton>(R.id.back).apply {
             setOnClickListener { finish() }
         }
         findViewById<TextView>(R.id.cetak).setOnClickListener {
