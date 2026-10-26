@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         store = Store(this)
 
+        findViewById<TextView>(R.id.version).text = "v${BuildConfig.VERSION_NAME}"
+
         val list = findViewById<RecyclerView>(R.id.list)
         list.layoutManager = LinearLayoutManager(this)
         adapter = MemberAdapter(
