@@ -84,8 +84,10 @@ object Nota {
         val fmt = DateTimeFormatter.ofPattern("dd/MM/yy", Locale("id", "ID"))
 
         val b = mutableListOf<String>()
-        b += center("MEMBERKIT")
-        b += center("NOTA LANGGANAN")
+        b += center("PT ZOMET TEKNOLOGI")
+        b += center("INDONESIA")
+        b += center("BADAU")
+        b += center("0821-5353-3164")
         b += sep
         b += row("No.", receiptNo(m))
         b += row("Tgl", now)
@@ -103,17 +105,8 @@ object Nota {
         b += row("TOTAL", "Rp " + money(m.price))
         b += row("BAYAR", "Rp " + money(m.price))
         b += row("KEMBALI", "Rp 0")
+        b += sep
         b += center("LUNAS")
-        if (m.note.isNotBlank()) {
-            b += sep
-            b += wrap("Catatan: ${m.note}")
-        }
-        b += sep
-        b += center("Terima kasih")
-        b += center("Simpan nota ini")
-        b += center("sebagai bukti aktif")
-        b += sep
-        b += center("* memberkit *")
         return b
     }
 

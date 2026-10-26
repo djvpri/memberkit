@@ -11,8 +11,8 @@ android {
         applicationId = "com.memberkit.app"
         minSdk = 24
         targetSdk = 34
-        versionCode = 6
-        versionName = "1.3.0"
+        versionCode = 7
+        versionName = "1.3.1"
 
         // diisi dari local.properties / gradle.properties: BACKEND_URL & BACKEND_TOKEN
         val backendUrl = (project.findProperty("MEMBERKIT_BACKEND_URL") as String?) ?: ""
