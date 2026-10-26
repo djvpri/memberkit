@@ -11,8 +11,14 @@ android {
         applicationId = "com.memberkit.app"
         minSdk = 24
         targetSdk = 34
-        versionCode = 5
-        versionName = "1.2.2"
+        versionCode = 6
+        versionName = "1.3.0"
+
+        // diisi dari local.properties / gradle.properties: BACKEND_URL & BACKEND_TOKEN
+        val backendUrl = (project.findProperty("MEMBERKIT_BACKEND_URL") as String?) ?: ""
+        val backendToken = (project.findProperty("MEMBERKIT_BACKEND_TOKEN") as String?) ?: ""
+        buildConfigField("String", "BACKEND_URL", "\"$backendUrl\"")
+        buildConfigField("String", "BACKEND_TOKEN", "\"$backendToken\"")
     }
 
     signingConfigs {

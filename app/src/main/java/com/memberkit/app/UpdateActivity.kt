@@ -24,6 +24,7 @@ class UpdateActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.checkBtn).setOnClickListener { check(manual = true) }
         check(manual = false)
+        refreshBackend()
     }
 
     private fun check(manual: Boolean) {
@@ -85,6 +86,27 @@ class UpdateActivity : AppCompatActivity() {
                 } else {
                     Updater.install(this, f)
                 }
+            }
+        }
+    }
+
+    private fun refreshBackend() {
+        val info = findViewById<TextView>(R.id.backupInfo)
+        if (!Backend.enabled) {
+            info.text = "Backup: nonaktif (URL/token backend belum diisi saat build)."
+            return
+        }
+        info.text = "Backup: mengirim…"
+        io.execute {
+            val members = Store(this).all()
+            val ok = Backend.backupNow(this, members)
+            val logs = Backend.flushQueue(this)
+            runOnUiThread {
+                if (isFinishing) return@runOnUiThread
+                info.text = if (ok)
+                    "Backup: tersimpan (${members.size} member) · log terkirim: $logs"
+                else
+                    "Backup: gagal terkirim, akan dicoba lagi otomatis."
             }
         }
     }

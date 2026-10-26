@@ -112,6 +112,7 @@ class EditActivity : AppCompatActivity() {
             price = price
         )
         store.upsert(m)
+        Backend.backupAsync(this)
         finish()
     }
 
@@ -126,7 +127,11 @@ class EditActivity : AppCompatActivity() {
             .setTitle("Hapus member?")
             .setMessage("${m.name} — ${m.app}")
             .setNegativeButton("Batal", null)
-            .setPositiveButton("Hapus") { _, _ -> store.delete(m.id); finish() }
+            .setPositiveButton("Hapus") { _, _ ->
+                store.delete(m.id)
+                Backend.backupAsync(this)
+                finish()
+            }
             .show()
     }
 }

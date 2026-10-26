@@ -73,6 +73,8 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         render()
+        // kirim sisa log dari sesi sebelumnya + backup berkala
+        Backend.backupAsync(this)
     }
 
     private fun openEdit(id: Long?) {
@@ -93,6 +95,7 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("Hapus") { _, _ ->
                 store.delete(m.id)
                 render()
+                Backend.backupAsync(this)
             }
             .show()
     }

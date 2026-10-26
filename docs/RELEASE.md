@@ -1,5 +1,14 @@
 # Release
 
+## v1.3.0
+
+- `versionCode` 6, `versionName` 1.3.0
+- **Backup otomatis** ke backend `memberkit-api` (Postgres di VPS Coolify) setiap app dibuka dan setiap member disimpan/dihapus
+- **Log error otomatis**: `App` memasang `Thread.setDefaultUncaughtExceptionHandler`, tangkap stack trace, simpan ke antrean, kirim ke backend segera; kalau offline dikirim saat app dibuka lagi
+- Layar Update menampilkan status backup terakhir
+- Konfigurasi `BACKEND_URL` / `BACKEND_TOKEN` masuk lewat `~/.gradle/gradle.properties` → `buildConfigField`, tidak di-commit
+- APK: https://github.com/djvpri/memberkit/releases/download/v1.3.0/memberkit-1.3.0.apk
+
 ## v1.2.2
 
 - `versionCode` 5, `versionName` 1.2.2
