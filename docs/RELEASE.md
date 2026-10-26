@@ -1,5 +1,13 @@
 # Release
 
+## v1.2.2
+
+- `versionCode` 5, `versionName` 1.2.2
+- **Fix crash**: layar Nota menutup app karena `R.id.back` di-cast ke `TextView` padahal `ImageButton` (`ClassCastException`)
+- Tambah `LayoutIdGuardTest` — memverifikasi setiap `findViewById<T>` cocok dengan tag layout; menangkap bug sejenis tanpa emulator
+- APK: https://github.com/djvpri/memberkit/releases/download/v1.2.2/memberkit-1.2.2.apk
+- SHA-256: `16614d8d219c057bc67b1b83258a9bc50320d67fa9b679705dfedc4efc22b7f7`
+
 ## v1.2.1
 
 - `versionCode` 4, `versionName` 1.2.1
