@@ -1,5 +1,12 @@
 # Release
 
+## v1.2.1
+
+- `versionCode` 4, `versionName` 1.2.1
+- Badge versi (`v1.2.1`) tampil di beranda, di samping jumlah member — sumbernya `BuildConfig.VERSION_NAME`, otomatis ikut naik
+- APK: https://github.com/djvpri/memberkit/releases/download/v1.2.1/memberkit-1.2.1.apk
+- SHA-256: `f4a49993348fa5e66e407cb2aa0d2c6ea4deb78d292b786928fa39e55d3c0abc`
+
 ## v1.2.0
 
 - `versionCode` 3, `versionName` 1.2.0
