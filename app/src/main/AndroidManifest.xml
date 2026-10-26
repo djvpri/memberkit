@@ -4,7 +4,14 @@
     <queries>
         <package android:name="com.whatsapp" />
         <package android:name="com.whatsapp.w4b" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="application/vnd.android.package-archive" />
+        </intent>
     </queries>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +37,10 @@
 
         <activity
             android:name=".NotaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".UpdateActivity"
             android:exported="false" />
 
         <provider

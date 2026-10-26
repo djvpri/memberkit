@@ -42,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.fab).setOnClickListener { openEdit(null) }
 
+        findViewById<TextView>(R.id.cekUpdate).setOnClickListener {
+            startActivity(Intent(this, UpdateActivity::class.java))
+        }
+
         findViewById<EditText>(R.id.search).addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) { query = s?.toString()?.trim() ?: ""; render() }
             override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
